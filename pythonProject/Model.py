@@ -2,8 +2,7 @@ import datetime
 
 class Player:
 
-    def __init__(self, username, name, first_name, birthdate, gender, rank):
-        self.username = username
+    def __init__(self,name, first_name, birthdate, gender, rank):
         self.name = name
         self.first_name = first_name
         self.birthdate = birthdate
@@ -12,7 +11,7 @@ class Player:
         self.score = 0
 
     def __str__(self):
-        players = f'{self.username}, {self.name}, rank/score : {self.rank}, {self.score}'
+        players = f'name : ,{self.name}, rank/score : {self.rank}, {self.score}'
         return players.format(self)
 
     def won_match(self):
@@ -20,6 +19,7 @@ class Player:
 
     def draw_match(self):
         self.score += 0.5
+
 class Players:
 
     def __init__(self):
@@ -40,18 +40,27 @@ class Players:
     def matchmaking_round1(self):
         return[[self.list[0], self.list[4]], [self.list[1], self.list[5]], [self.list[2], self.list[6]], [self.list[3], self.list[7]]]
 
-    def matchmaking_over_rounds(self, matches):
-
-        for match in matches.list:
-            if (match.white_player == self.list[0] and match.black_player == self.list[1]) or (match.black_player == self.list[0] and match.white_player == self.list[1]):
-                 return [[self.list[0], self.list[2]],
-                        [self.list[1], self.list[3]],
-                        [self.list[4], self.list[5]],
-                        [self.list[6], self.list[7]]]
-            return [[self.list[0], self.list[1]],
+    def matchmaking_over_rounds(self, tournament):
+        for matches in tournament.round_list:
+            for match in matches.list:
+                if (match.white_player == self.list[0] and match.black_player == self.list[1]) or (match.black_player == self.list[0] and match.white_player == self.list[1]):
+                     return [[self.list[0], self.list[2]],
+                            [self.list[1], self.list[3]],
+                            [self.list[4], self.list[5]],
+                            [self.list[6], self.list[7]]]
+        return [[self.list[0], self.list[1]],
                 [self.list[2], self.list[3]],
                 [self.list[4], self.list[5]],
                 [self.list[6], self.list[7]]]
+
+    def to_dict(self):
+        players_dict = {
+            "list": []
+        }
+        for player in self.list:
+            players_dict["list"].append(player.to_dict())
+
+        return players_dict
 
 
 class Match:
