@@ -11,13 +11,13 @@ class View:
         print("Hello ! Welcome to the Chess Tournament Manager Program\n")
         print("What do you want to do ?")
         print("1 - Create a new player")
-        print("2 - Create a new tournament")
-        print("3 - Continue an existing tournament")
-        print("4 - Display reports")
-        print("5 - End the program\n")
+        # print("2 - Create a new tournament")
+        # print("3 - Continue an existing tournament")
+        # print("4 - Display reports")
+        print("2 - End the program\n")
         try:
             choice = int(input("Enter your choice (1,2,3,4,5) : "))
-            if choice < 1 or choice > 5:
+            if choice < 1 or choice > 2:
                 raise ValueError
             print("\nYour choice ({}) has been "
                   "successfully entered...\n".format(choice))
@@ -140,16 +140,22 @@ class View:
 
         # récupération du nom du round
 
-    def get_tour_number(self):
-        number = input("Round number : ")
+    @staticmethod
+    def ask_round_amount():
         try:
-            number = int(number)
-            if number <= 0:
-                raise ValueError("le rank saisie est négatif ou nulle")
-            return number
+            round_amount = input("Please enter the round "
+                                 "amount (min = 1, max = 20, default = 4) : ")
+            if round_amount == "":
+                round_amount = 4
+            round_amount = int(round_amount)
+            if round_amount < 1 or round_amount > 20:
+                raise ValueError
+            print("Round amount entered successfully")
+            return round_amount
         except ValueError:
-            print("la valeur saisie est invalide")
-            return self.get_tour_number()
+            print("The round amount isn't in the"
+                  " value range (0 < round_amount < 21) !")
+            return View.ask_round_amount()
 
     def time_controler(self):
         while True:
@@ -213,3 +219,85 @@ class View:
         except ValueError:
             print("The winner doesn't respect the format (W or B) !")
             return View.ask_winner(match)
+
+    @staticmethod
+    def ask_to_continue():
+        try:
+            print(
+                "Do you want to stop here and continue later ? ")
+            choice = input("Format 'yes' or 'no' : ")
+            if choice != "yes" and choice != "no":
+                raise ValueError
+            if choice == "yes":
+                return 0
+            elif choice == "no":
+                return 1
+            print("Choice entered successfully...")
+            return choice
+        except ValueError:
+            print("The choice entered doesn't respect "
+                  "the format ('yes' or 'no') !")
+            return View.ask_to_continue()
+
+    @staticmethod
+    def choice_leave_tournament():
+        print("Program ended ! See you soon ! Don't forget "
+              "everything you've done is saved and waiting "
+              "for you to comeback !")
+
+    @staticmethod
+    def error_occurred():
+        print("An unknown error occurred ...")
+
+    @staticmethod
+    def intro_list_of_players():
+        print("Here's the list of the tournament's players :")
+
+    @staticmethod
+    def report_display_round_number(i):
+        print("Round n°" + i)
+
+    @staticmethod
+    def ask_tournament_id(id_range):
+        try:
+            choice = int(input(
+                "What tournament do you want to chose ? "))
+            if choice < 0 or choice > id_range:
+                raise ValueError
+            print("ID entered successfully...")
+            return choice
+        except ValueError:
+            print("The ID entered is not in the range !")
+            return View.ask_tournament_id(id_range)
+
+    @staticmethod
+    def display_results(tournament):
+        print("The tournament is now finished, every match "
+              "has been played, here's the recap :")
+
+        print("Results of " + tournament.name + " :")
+        tournament.players.order_by_score()
+        for player in tournament.players.list:
+            print(player.firstname + " " + player.lastname + " - Rank = "
+                  + str(player.rank) + " - Final score = " + str(player.score))
+
+    @staticmethod
+    def add_player(id_list, player_range):
+        try:
+            player_id = int(input(
+                "Please enter the id of the user you want to add : "))
+            if player_id < 0 or player_id > player_range - 1:
+                raise ValueError
+            if player_id in id_list:
+                raise ValueError
+            print("ID successfully...")
+            return player_id
+        except ValueError:
+            print("The ID entered is not in the range or has "
+                  "already been added !")
+            return View.add_player(id_list, player_range)
+
+    @staticmethod
+    def display_amount_player_registered(amount):
+        print("\nThere are now {} players registered !\n"
+              .format(amount))
