@@ -1,5 +1,6 @@
 import re
-from Model import *
+import datetime
+
 
 
 class View:
@@ -11,13 +12,14 @@ class View:
         print("Hello ! Welcome to the Chess Tournament Manager Program\n")
         print("What do you want to do ?")
         print("1 - Create a new player")
-        # print("2 - Create a new tournament")
-        # print("3 - Continue an existing tournament")
-        # print("4 - Display reports")
-        print("2 - End the program\n")
+        print("2 - Create a new tournament")
+        print("3 - Add players to tournament")
+        print("4 - Continue an existing tournament")
+        print("5 - Start tournament")
+        print("6 - End the program\n")
         try:
-            choice = int(input("Enter your choice (1,2,3,4,5) : "))
-            if choice < 1 or choice > 2:
+            choice = int(input("Enter your choice (1,2,3,4,5,6) : "))
+            if choice < 1 or choice > 6:
                 raise ValueError
             print("\nYour choice ({}) has been "
                   "successfully entered...\n".format(choice))
@@ -76,16 +78,15 @@ class View:
 
     # récupération du genre
     def get_gender(self):
-        while True:
             try:
                 gender = input("Enter gender (Male or Female): ")
-                if gender == "Male" or gender == "Female":
-                    print("Gender entered successfully...")
-                    break
-                else:
-                    print("Gender should be either Male or Female")
-            except:
-                continue
+                if gender != "Male" and gender != "Female":
+                    raise ValueError
+                print("Gender entered successfully...")
+                return gender
+            except ValueError:
+                print("Incorrect gender, has to be 'Male' or 'Female'")
+                return self.get_gender()
 
     # récupération du rank
     def get_ranking(self):
@@ -117,7 +118,7 @@ class View:
         # récupération du lieu
 
     def tournament_location(self):
-        expression = r"^[A-Za-z]{1,}$"
+        expression = r"^[A-Za-z ]*"
         exp_loc = re.compile(expression)
         location = input("Indiquer le lieu du tournoi :")
         while exp_loc.search(location) is None:
@@ -171,13 +172,7 @@ class View:
 
     def get_description(self):
         description = input("Information : ")
-        try:
-            if len(description) <= 0:
-                raise ValueError("Aucune information saisie ou saisie invalide")
-            return description
-        except Exception as e:
-            print(e)
-            return self.get_description()
+        return description
 
 
 # ============== View Match =================
@@ -253,34 +248,19 @@ class View:
     def intro_list_of_players():
         print("Here's the list of the tournament's players :")
 
-    @staticmethod
-    def report_display_round_number(i):
-        print("Round n°" + i)
 
-    @staticmethod
-    def ask_tournament_id(id_range):
-        try:
-            choice = int(input(
-                "What tournament do you want to chose ? "))
-            if choice < 0 or choice > id_range:
-                raise ValueError
-            print("ID entered successfully...")
-            return choice
-        except ValueError:
-            print("The ID entered is not in the range !")
-            return View.ask_tournament_id(id_range)
+    # def get_player(self):
+    #     try:
+    #         name = input("Quel joueur souhaitez-vous ajouter au tournoi ?")
+    #         # print("le joueur a bien été ajouté au tournoi")
+    #         return name
+    #     except IndexError:
+    #         print("joueur introuvable")
+    #         return self.get_player()
 
-    @staticmethod
-    def display_results(tournament):
-        print("The tournament is now finished, every match "
-              "has been played, here's the recap :")
-
-        print("Results of " + tournament.name + " :")
-        tournament.players.order_by_score()
-        for player in tournament.players.list:
-            print(player.firstname + " " + player.lastname + " - Rank = "
-                  + str(player.rank) + " - Final score = " + str(player.score))
-
+    # def get_tournament(self):
+    #     get_tournament = input("Quel tournoi souhaitez-vous reprendre ?")
+    #     return get_tournament
     @staticmethod
     def add_player(id_list, player_range):
         try:
@@ -298,6 +278,5 @@ class View:
             return View.add_player(id_list, player_range)
 
     @staticmethod
-    def display_amount_player_registered(amount):
-        print("\nThere are now {} players registered !\n"
-              .format(amount))
+    def display_player_firstname_lastname(i, name, first_name):
+        print(i + " - " + name + " " + first_name)
