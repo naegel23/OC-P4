@@ -1,4 +1,5 @@
-import datetime
+# import datetime
+
 
 class Player:
 
@@ -6,19 +7,29 @@ class Player:
         self.name = name
         self.first_name = first_name
         self.birthdate = birthdate
-        self.gender = gender
+        self.gender = str(gender)
         self.rank = rank
         self.score = 0
 
+
     def __str__(self):
-        players = f'name : ,{self.name}, rank/score : {self.rank}, {self.score}'
-        return players.format(self)
+        info = f'name : {self.name} -- rank : {self.rank} -- score : {self.score}'
+        return info.format(self)
 
     def won_match(self):
         self.score += 1.0
 
     def draw_match(self):
         self.score += 0.5
+
+    def to_dict(self):
+        player_dict = {"name": self.name,
+                       "first_name": self.first_name,
+                       "birthday": str(self.birthdate),
+                       "gender": self.gender,
+                       "rank": self.rank}
+
+        return player_dict
 
 class Players:
 
@@ -28,7 +39,7 @@ class Players:
     def get_lenght(self):
         return len(self.list)
 
-    def add_player(self, player):
+    def add(self, player):
         self.list.append(player)
 
     def order_by_rank(self):
@@ -70,9 +81,27 @@ class Match:
         self.black_player = black_player
         self.winner = None
 
+    def set_winner(self, winner):
+        self.winner = winner
+
     def versus(self):
         versus = (self.white_player, self.black_player)
         return versus
+
+    def to_dictionary(self):
+        if self.winner is None:
+            match_dict = {
+                "white_player": self.white_player.to_dictionary(),
+                "black_player": self.black_player.to_dictionary(),
+                "winner": None
+            }
+        else:
+            match_dict = {
+                "white_player": self.white_player.to_dictionary(),
+                "black_player": self.black_player.to_dictionary(),
+                "winner": self.winner.to_dictionary()
+            }
+        return match_dict
 
 class Matches:
 
@@ -82,21 +111,52 @@ class Matches:
     def add_match(self, match):
         self.list.append(match)
 
+    def to_dictionary(self):
+        matches_dict = {
+            "list": []
+        }
+        for match in self.list:
+            matches_dict["list"].append(match.to_dictionary())
+
+        return matches_dict
+
 
 class Tournament:
 
-    def __init__(self, name, location, players, rounds, timer, description):
+    def __init__(self, name, location, rounds, timer, description):
         self.name = name
         self.location = location
-        self.date = datetime.date.today().strftime("%d/%m/%Y")
+        # self.date = datetime.date.today().strftime("%d/%m/%Y")
         self.rounds = rounds
         self.round_list = []
-        self.players = players
+        self.players = []
         self.timer = timer
         self.description = description
+
+    def __str__(self):
+        info = f'name : {self.name} -- location : {self.location} -- rounds  : {self.rounds} -- timer : {self.timer} -- description : {self.description}'
+        return info.format(self)
+
+    # def add_players(self, player):
+    #     self.players.append(player)
 
     def add_round(self, matches):
         self.round_list.append(matches)
 
     def current_round(self):
         return len(self.round_list)
+
+    def to_dict(self):
+        tournament_dict = {
+            "name": self.name,
+            "location": self.location,
+            "rounds": self.rounds,
+            "round_list": [],
+            "players": self.players,
+            "timer": self.timer,
+            "description": self.description
+        }
+        for matches in self.round_list:
+            tournament_dict["round_list"].append(matches.to_dictionary())
+
+        return tournament_dict
