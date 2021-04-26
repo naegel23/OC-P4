@@ -148,7 +148,7 @@ class Controller:
     #             continue_choice = View.ask_to_continue()
     #             if continue_choice == 0:
     #                 return
- controller = Controller()
+controller = Controller()
 controller.start_program()
 controller.create_player()
 controller.insert_player()
