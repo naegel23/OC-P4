@@ -2,24 +2,22 @@ import re
 import datetime
 
 
-
 class View:
     def __init__(self):
         pass
 
     @staticmethod
     def welcome():
+        print("\n==================================================")
         print("Hello ! Welcome to the Chess Tournament Manager Program\n")
         print("What do you want to do ?")
         print("1 - Create a new player")
         print("2 - Create a new tournament")
-        print("3 - Add players to tournament")
-        print("4 - Continue an existing tournament")
-        print("5 - Start tournament")
-        print("6 - End the program\n")
+        print("3 - Continue an existing tournament")
+        print("4 - End the program\n")
         try:
             choice = int(input("Enter your choice (1,2,3,4,5,6) : "))
-            if choice < 1 or choice > 6:
+            if choice < 1 or choice > 4:
                 raise ValueError
             print("\nYour choice ({}) has been "
                   "successfully entered...\n".format(choice))
@@ -28,10 +26,7 @@ class View:
             print("\nThe value entered doesn't match the possible choices !\n")
             return View.welcome()
 
-
 # ============création player==============
-
-
     def get_username(self):
         username = input("Entrer votre username : ")
         try:
@@ -78,15 +73,15 @@ class View:
 
     # récupération du genre
     def get_gender(self):
-            try:
-                gender = input("Enter gender (Male or Female): ")
-                if gender != "Male" and gender != "Female":
-                    raise ValueError
-                print("Gender entered successfully...")
-                return gender
-            except ValueError:
-                print("Incorrect gender, has to be 'Male' or 'Female'")
-                return self.get_gender()
+        try:
+            gender = input("Enter gender (Male or Female): ")
+            if gender != "Male" and gender != "Female":
+                raise ValueError
+            print("Gender entered successfully...")
+            return gender
+        except ValueError:
+            print("Incorrect gender, has to be 'Male' or 'Female'")
+            return self.get_gender()
 
     # récupération du rank
     def get_ranking(self):
@@ -101,10 +96,7 @@ class View:
             print("la valeur saisie est invalide")
             return self.get_ranking()
 
-
 # ================ création Tournoi =================
-
-
     def tournament_name(self):
         name = input("nom du tournoi :")
         try:
@@ -174,10 +166,7 @@ class View:
         description = input("Information : ")
         return description
 
-
 # ============== View Match =================
-
-
     @staticmethod
     def display_player_infos(firstname, lastname, rank, score):
         print(firstname + " " + lastname +
@@ -246,21 +235,9 @@ class View:
 
     @staticmethod
     def intro_list_of_players():
+        print("\n==================================================")
         print("Here's the list of the tournament's players :")
 
-
-    # def get_player(self):
-    #     try:
-    #         name = input("Quel joueur souhaitez-vous ajouter au tournoi ?")
-    #         # print("le joueur a bien été ajouté au tournoi")
-    #         return name
-    #     except IndexError:
-    #         print("joueur introuvable")
-    #         return self.get_player()
-
-    # def get_tournament(self):
-    #     get_tournament = input("Quel tournoi souhaitez-vous reprendre ?")
-    #     return get_tournament
     @staticmethod
     def add_player(id_list, player_range):
         try:
@@ -280,3 +257,45 @@ class View:
     @staticmethod
     def display_player_firstname_lastname(i, name, first_name):
         print(i + " - " + name + " " + first_name)
+
+    @staticmethod
+    def intro_choice_import_tournament():
+        print("\n==================================================")
+        print("You've chosen to import an existing tournament !\n")
+
+    @staticmethod
+    def display_tournament_infos(i, name, location):
+        print(i + " - Name: " + name + " - Place: " + location)
+
+    @staticmethod
+    def ask_tournament_id(id_range):
+        print("\n==================================================")
+        try:
+            choice = int(input(
+                "What tournament do you want to chose ? "))
+            if choice < 0 or choice > id_range:
+                raise ValueError
+            print("ID entered successfully...")
+            return choice
+        except ValueError:
+            print("The ID entered is not in the range !")
+            return View.ask_tournament_id(id_range)
+
+    @staticmethod
+    def display_results(tournament):
+        print("\n==================================================")
+        print("The tournament is now finished, every match "
+              "has been played, here's the recap :")
+
+        print("Results of " + tournament.name + " :")
+        tournament.players.order_by_score()
+        for player in tournament.players.list:
+            print(player.name + " " + player.first_name + " - Rank = "
+                  + str(player.rank) + " - Final score = " + str(player.score))
+
+    @staticmethod
+    def intro_choice_create_tournament():
+        print("\n==================================================")
+        print("You've chosen to create a tournament from scratch !\n")
+
+        print("Here are all the players in your database :")
