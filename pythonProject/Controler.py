@@ -14,7 +14,6 @@ class Controller:
 
         # === START PROGRAM ===
     def start_program(self):
-        # self.tournament = Tournament("budokai", "lille", "23/02/2021", self.view.ask_round_amount(), "bullet", "")
         while True:
             choice = View.welcome()
             if choice == 1:
