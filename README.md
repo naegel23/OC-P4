@@ -1,2 +1,4 @@
 # OC-P4
-Chess software
+pip install tinydb 
+pip install datetime 
+pip install re 
