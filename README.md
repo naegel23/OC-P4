@@ -3,12 +3,12 @@ Chess software
 1) Description de l'application
 Ce projet consiste en une application python qui permet de :
 
-gérer des tournois d'échecs
-gérer des joueurs d'échecs
-générer des rapports relatifs aux tournois et aux joueurs :
-Liste de tous les acteurs
-Liste de tous les joueurs d'un tournoi
-Liste de tous les tournois
+*gérer des tournois d'échecs
+*gérer des joueurs d'échecs
+*générer des rapports relatifs aux tournois et aux joueurs :
+*Liste de tous les acteurs
+*Liste de tous les joueurs d'un tournoi
+*Liste de tous les tournois
 
 L'application se lance à partir du programme main.py situé à la racine du projet en lançant main.py
 
