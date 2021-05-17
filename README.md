@@ -1,16 +1,14 @@
 # OC-P4
 Chess software
 1) Description de l'application
-Ce projet consiste en une application python exécutable à la demande qui permet de :
+Ce projet consiste en une application python qui permet de :
 
-gérer des tournois d'échecs,
-gérer des joueurs d'échecs,
+gérer des tournois d'échecs
+gérer des joueurs d'échecs
 générer des rapports relatifs aux tournois et aux joueurs :
-  Liste de tous les acteurs
-  Liste de tous les joueurs d'un tournoi
-  Liste de tous les tournois
-  Liste de tous les tours d'un tournoi
-  Liste de tous les matchs d'un tournoi
+Liste de tous les acteurs
+Liste de tous les joueurs d'un tournoi
+Liste de tous les tournois
 
 L'application se lance à partir du programme main.py situé à la racine du projet en lançant main.py
 
