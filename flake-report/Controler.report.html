@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: .\Controler.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-1"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="Controler.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               .\Controler.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="F405">
+               <span class="count sev-1">
+                  15
+               </span>
+               <strong>F405:</strong> 'Player' may be undefined, or defined from star imports: Model
+               
+                  (and 4 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>'Player' may be undefined, or defined from star imports: Model:</p>
+               
+               <a href="Controler.source.html#l45">
+                  <tt><i>45</i>         <span class="k">return</span> <span class="n">Player</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">birthday</span><span class="p">,</span> <span class="n">gender</span><span class="p">,</span> <span class="n">rank</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'Players' may be undefined, or defined from star imports: Model:</p>
+               
+               <a href="Controler.source.html#l48">
+                  <tt><i>48</i>         <span class="n">players</span> <span class="o">=</span> <span class="n">Players</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'Tournament' may be undefined, or defined from star imports: Model:</p>
+               
+               <a href="Controler.source.html#l61">
+                  <tt><i>61</i>         <span class="k">return</span> <span class="n">Tournament</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">players</span><span class="p">,</span> <span class="n">rounds</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'Players' may be undefined, or defined from star imports: Model:</p>
+               
+               <a href="Controler.source.html#l71">
+                  <tt><i>71</i>         <span class="n">players</span> <span class="o">=</span> <span class="n">Players</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'Player' may be undefined, or defined from star imports: Model:</p>
+               
+               <a href="Controler.source.html#l76">
+                  <tt><i>76</i>                 <span class="n">Player</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'Matches' may be undefined, or defined from star imports: Model:</p>
+               
+               <a href="Controler.source.html#l106">
+                  <tt><i>106</i>             <span class="n">matches</span> <span class="o">=</span> <span class="n">Matches</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'Match' may be undefined, or defined from star imports: Model:</p>
+               
+               <a href="Controler.source.html#l110">
+                  <tt><i>110</i>                 <span class="n">matches</span><span class="o">.</span><span class="n">add_match</span><span class="p">(</span><span class="n">Match</span><span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'Players' may be undefined, or defined from star imports: Model:</p>
+               
+               <a href="Controler.source.html#l134">
+                  <tt><i>134</i>         <span class="n">players</span> <span class="o">=</span> <span class="n">Players</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'Tournament' may be undefined, or defined from star imports: Model:</p>
+               
+               <a href="Controler.source.html#l135">
+                  <tt><i>135</i>         <span class="n">tournament</span> <span class="o">=</span> <span class="n">Tournament</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;location&quot;</span><span class="p">],</span> <span class="n">players</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'Player' may be undefined, or defined from star imports: Model:</p>
+               
+               <a href="Controler.source.html#l141">
+                  <tt><i>141</i>             <span class="n">current_player</span> <span class="o">=</span> <span class="n">Player</span><span class="p">(</span><span class="n">player</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">player</span><span class="p">[</span><span class="s2">&quot;first_name&quot;</span><span class="p">],</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'Matches' may be undefined, or defined from star imports: Model:</p>
+               
+               <a href="Controler.source.html#l149">
+                  <tt><i>149</i>             <span class="n">temp_round</span> <span class="o">=</span> <span class="n">Matches</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'Player' may be undefined, or defined from star imports: Model:</p>
+               
+               <a href="Controler.source.html#l151">
+                  <tt><i>151</i>                 <span class="n">white_player</span> <span class="o">=</span> <span class="n">Player</span><span class="p">(</span><span class="n">matches</span><span class="p">[</span><span class="s2">&quot;white_player&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">],</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'Player' may be undefined, or defined from star imports: Model:</p>
+               
+               <a href="Controler.source.html#l157">
+                  <tt><i>157</i>                 <span class="n">black_player</span> <span class="o">=</span> <span class="n">Player</span><span class="p">(</span><span class="n">matches</span><span class="p">[</span><span class="s2">&quot;black_player&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">],</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'Match' may be undefined, or defined from star imports: Model:</p>
+               
+               <a href="Controler.source.html#l163">
+                  <tt><i>163</i>                 <span class="n">temp_match</span> <span class="o">=</span> <span class="n">Match</span><span class="p">(</span><span class="n">white_player</span><span class="p">,</span> <span class="n">black_player</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'Player' may be undefined, or defined from star imports: Model:</p>
+               
+               <a href="Controler.source.html#l165">
+                  <tt><i>165</i>                     <span class="n">temp_match</span><span class="o">.</span><span class="n">set_winner</span><span class="p">(</span><span class="n">Player</span><span class="p">(</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="F841">
+               <span class="count sev-1">
+                  2
+               </span>
+               <strong>F841:</strong> local variable 'white_player' is assigned to but never used
+               
+                  (and 1 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Local variable 'white_player' is assigned to but never used:</p>
+               
+               <a href="Controler.source.html#l108">
+                  <tt><i>108</i>                 <span class="n">white_player</span> <span class="o">=</span> <span class="mi">0</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Local variable 'black_player' is assigned to but never used:</p>
+               
+               <a href="Controler.source.html#l109">
+                  <tt><i>109</i>                 <span class="n">black_player</span> <span class="o">=</span> <span class="mi">1</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="F403">
+               <span class="count sev-1">
+                  1
+               </span>
+               <strong>F403:</strong> 'from Model import *' used; unable to detect undefined names
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="Controler.source.html#l1">
+                  <tt><i>1</i> <span class="kn">from</span> <span class="nn">Model</span> <span class="kn">import</span> <span class="o">*</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E501">
+               <span class="count sev-2">
+                  3
+               </span>
+               <strong>E501:</strong> line too long (96 > 79 characters)
+               
+                  (and 2 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Line too long (96 > 79 characters):</p>
+               
+               <a href="Controler.source.html#l66">
+                  <tt><i>66</i>             <span class="n">View</span><span class="o">.</span><span class="n">display_player_firstname_lastname</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">player</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">player</span><span class="p">[</span><span class="s2">&quot;first_name&quot;</span><span class="p">])</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (110 > 79 characters):</p>
+               
+               <a href="Controler.source.html#l104">
+                  <tt><i>104</i>                 <span class="n">View</span><span class="o">.</span><span class="n">display_player_infos</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">rank</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">score</span><span class="p">))</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (98 > 79 characters):</p>
+               
+               <a href="Controler.source.html#l123">
+                  <tt><i>123</i>             <span class="bp">self</span><span class="o">.</span><span class="n">tournaments_db</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">tournament</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span> <span class="n">tournament_in_db</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">tournament</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E115">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E115:</strong> expected an indented block (comment)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="Controler.source.html#l130">
+                  <tt><i>130</i>     <span class="c1">#enlever tournaments-db et remplacer par self.tournaments_db</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E265">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E265:</strong> block comment should start with '# '
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="Controler.source.html#l130">
+                  <tt><i>130</i>     <span class="c1">#enlever tournaments-db et remplacer par self.tournaments_db</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>
